@@ -1,0 +1,1 @@
+export { loadCatchjs } from "./loading";
