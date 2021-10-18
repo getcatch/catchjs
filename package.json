@@ -1,0 +1,74 @@
+{
+  "name": "@get-catch/catchjs",
+  "author": "Catch (https://getcatch.com)",
+  "license": "MIT",
+  "keywords": ["Catch", "Catch.js"],
+  "files": ["dist", "src", "types"],
+  "module": "./dist/catchjs.es.js",
+  "types": "types/index.d.ts",
+  "typings": "types/index.d.ts",
+  "version": "1.0.0",
+  "scripts": {
+    "postinstall": "husky install",
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint src/ --ext .ts,.tsx",
+    "lint-staged": "lint-staged",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.2",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.2",
+    "jest": "^27.2.5",
+    "lint-staged": "^11.2.3",
+    "prettier": "^2.4.1",
+    "prettier-eslint": "^13.0.0",
+    "ts-jest": "^27.0.5",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.2",
+    "vite": "^2.6.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "prettier",
+      "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "rules": {
+      "no-console": 0,
+      "no-void": 0,
+      "max-classes-per-file": 0,
+      "no-param-reassign": 0
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,css}": [
+      "yarn lint",
+      "prettier --write"
+    ]
+  },
+  "jest": {
+    "roots": ["<rootDir>/src"],
+    "testMatch": [
+      "**/__tests__/**/*.+(ts|tsx|js)",
+      "**/?(*.)+(spec|test).+(ts|tsx|js)"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "testEnvironment": "jsdom",
+    "testEnvironmentOptions": {
+      "resources": "usable"
+    }
+  }
+}

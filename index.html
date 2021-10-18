@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catch.js Module Loader</title>
+
+    <style>
+      body {
+        margin: 0;
+        padding: 16px 32px;
+        background-color: black;
+        color: green;
+        font-family: monospace;
+      }
+
+      h1 {
+        font-weight: normal;
+        text-decoration: underline;
+        text-decoration-style: double;
+      }
+
+      p::before {
+        content: "➤ ";
+      }
+
+      ::selection {
+        background-color: blue;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Catch.js Module Loader</h1>
+    <div class="load-info"></div>
+    <catch-callout>
+      Initializing&hellip;
+    </catch-callout>
+    <div class="init-info"></div>
+
+    <script type="module" src="/src/app.ts"></script>
+  </body>
+</html>
