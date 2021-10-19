@@ -14,7 +14,7 @@
   "module": "./dist/catchjs.es.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "scripts": {
     "postinstall": "husky install",
     "dev": "vite",
