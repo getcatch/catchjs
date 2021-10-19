@@ -20,7 +20,7 @@ import { loadCatchjs } from "@get-catch/catchjs";
 const catchjs = await loadCatchjs();
 ```
 
-Catch.js may be loaded in either "sandbox" mode (intended for dev/test environments) or "live" mode(for production). By default, `loadCatchjs()` will load the sandbox mode. For live mode, pass an `options` argument to `loadCatchjs()` with the entry `live: true`:
+Catch.js may be loaded in either "sandbox" mode (intended for dev/test environments) or "live" mode (for production). By default, `loadCatchjs()` will load the sandbox mode. For live mode, pass an `options` argument to `loadCatchjs()` with the entry `live: true`:
 
 ```js
 const catchjs = await loadCatchjs({
