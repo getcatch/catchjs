@@ -12,10 +12,12 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.ACTION_GITHUB_TOKEN }}
 
       - name: "Automated version bump"
         uses: "phips28/gh-action-bump-version@master"
         with:
           tag-prefix: "v"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACTION_GITHUB_TOKEN }}
