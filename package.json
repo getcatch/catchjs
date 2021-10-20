@@ -1,10 +1,17 @@
 {
   "name": "@get-catch/catchjs",
+  "description": "A client-side loader for the Catch.js SDK",
   "author": "Catch (https://getcatch.com)",
+  "homepage": "https://catch.readme.io/reference/catchjs",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/getcatch/catchjs.git"
+  },
   "license": "MIT",
   "keywords": [
     "Catch",
-    "Catch.js"
+    "Catch.js",
+    "Catch SDK"
   ],
   "files": [
     "dist",
