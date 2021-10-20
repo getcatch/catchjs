@@ -16,7 +16,6 @@
   "typings": "types/index.d.ts",
   "version": "1.0.7",
   "scripts": {
-    "postinstall": "husky install",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src/ --ext .ts,.tsx",
