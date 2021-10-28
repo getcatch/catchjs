@@ -28,6 +28,7 @@ const initStartTime = performance.now();
 // Initialize with test public key for Merch by Catch.
 await catchjs.init("Ei6eCMabeqZT3AuiFcX3XuUC", {
   pageType: "demo",
+  theme: "dark-mono",
 });
 const initEndTime = performance.now();
 

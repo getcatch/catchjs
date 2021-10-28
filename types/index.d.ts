@@ -1,4 +1,4 @@
-type Theme = "default";
+type Theme = "light-color" | "light-mono" | "dark-color" | "dark-mono";
 
 type PageType =
   | "unknown"
@@ -28,6 +28,7 @@ interface CatchOptions {
 }
 
 interface CatchHandle {
+  setTheme: (theme: Theme) => void;
   setPageType: (pageType: PageType) => void;
   openCheckout: (checkoutId: string, options?: OpenCheckoutOptions) => void;
 }
