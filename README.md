@@ -30,7 +30,7 @@ const catchjs = await loadCatchjs({
 
 `loadCatchjs()` returns a `Promise` that resolves with the `catchjs` namespace object once Catch.js has loaded, and rejects if Catch.js fails to load. This function should only be invoked in a browser or browser-like environment (i.e. when `window` is defined), and will reject if invoked in a server environment.
 
-Once loaded, Catch.js must still be initialized by calling `catchjs.init()` (refer to the [initialization docs](https://catch.readme.io/reference/catchjs#initialization)).
+Once loaded, Catch.js must still be initialized by calling `catchjs.init()` (please refer to the [initialization docs](https://catch.readme.io/reference/catchjs#initialization)).
 
 ## TypeScript Support
 
