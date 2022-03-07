@@ -30,6 +30,7 @@ interface CatchOptions {
 interface CatchHandle {
   setTheme: (theme: Theme) => void;
   setPageType: (pageType: PageType) => void;
+  trackPaymentMethodSelected: () => void;
   openCheckout: (checkoutId: string, options?: OpenCheckoutOptions) => void;
 }
 
