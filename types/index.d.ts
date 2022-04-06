@@ -20,6 +20,7 @@ interface OpenCheckoutOptions {
   onCancel?: () => void;
   onConfirm?: () => void;
   prefill?: CheckoutPrefill;
+  autoCloseOnConfirm?: boolean;
 }
 
 interface CatchOptions {
@@ -32,6 +33,7 @@ interface CatchHandle {
   setPageType: (pageType: PageType) => void;
   trackPaymentMethodSelected: () => void;
   openCheckout: (checkoutId: string, options?: OpenCheckoutOptions) => void;
+  closeConfirmedCheckout: () => void;
 }
 
 interface SDKInfo {
