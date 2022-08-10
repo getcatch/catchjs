@@ -21,6 +21,7 @@ interface OpenCheckoutOptions {
   onConfirm?: () => void;
   prefill?: CheckoutPrefill;
   autoCloseOnConfirm?: boolean;
+  hideHeader?: boolean;
 }
 
 interface CatchOptions {
