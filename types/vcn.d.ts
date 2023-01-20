@@ -41,7 +41,7 @@ interface Item {
   currency: string;
 }
 
-type Items = Item[];
+type Items = Array<Item>;
 
 interface Platform {
   platform_type?: string;
