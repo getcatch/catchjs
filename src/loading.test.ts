@@ -22,6 +22,10 @@ const injectScript = (scriptUrl: string): Promise<void> => {
 const preloadSandbox = (): Promise<void> => injectScript(SANDBOX_SCRIPT_URL);
 const preloadLive = (): Promise<void> => injectScript(LIVE_SCRIPT_URL);
 
+interface ShimmedWindowForTests extends Window {
+  require: () => unknown;
+}
+
 describe("loadCatchjs()", () => {
   beforeAll(() => {
     // Loading Catch.js has the side effect of calling window.customElements.define()
@@ -29,6 +33,16 @@ describe("loadCatchjs()", () => {
     // we don't want to actually register elements (because registering an element that
     // has already been defined will throw an error).
     window.customElements.define = jest.fn();
+
+    // Temp workaround: jsdom chockes when executing Catch.js, because Catch.js makes
+    // a call to global require() which is not defined. This likely represents a deeper
+    // problem with how the Catch.js bundle is generated, but for now we're working around
+    // this by mocking the global require() function. These tests are intended to assert
+    // the loading of Catch.js, and therefore don't care about internal require()
+    // functionality.
+    (window as unknown as ShimmedWindowForTests).require = jest.fn(() => {
+      return {};
+    });
   });
 
   afterEach(() => {
