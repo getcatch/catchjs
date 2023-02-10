@@ -1,6 +1,5 @@
 import {
-  SANDBOX_SCRIPT_URL,
-  LIVE_SCRIPT_URL,
+  getScriptUrl,
   loadCatchjs,
   getNamespace,
   resetForTests,
@@ -19,8 +18,10 @@ const injectScript = (scriptUrl: string): Promise<void> => {
   });
 };
 
-const preloadSandbox = (): Promise<void> => injectScript(SANDBOX_SCRIPT_URL);
-const preloadLive = (): Promise<void> => injectScript(LIVE_SCRIPT_URL);
+const preloadSandbox = (): Promise<void> =>
+  injectScript(getScriptUrl("production", false));
+const preloadLive = (): Promise<void> =>
+  injectScript(getScriptUrl("production", true));
 
 interface ShimmedWindowForTests extends Window {
   require: () => unknown;
