@@ -1,8 +1,21 @@
-import type { CatchSDK, CatchLoadOptions, CatchWindow } from "../types";
+import type {
+  CatchSDK,
+  CatchLoadOptions,
+  CatchWindow,
+  CatchEnvironment,
+} from "../types";
 
-const SANDBOX_SCRIPT_URL =
-  "https://js-sandbox.getcatch.com/catchjs/v1/catch.js";
-const LIVE_SCRIPT_URL = "https://js.getcatch.com/catchjs/v1/catch.js";
+const getScriptUrl = (environment: CatchEnvironment, live: boolean): string => {
+  let envDomainPart = "";
+  if (environment === "staging") {
+    envDomainPart = "staging.";
+  } else if (environment === "development") {
+    envDomainPart = "dev.";
+  }
+  return `https://${envDomainPart}js${
+    live ? "" : "-sandbox"
+  }.getcatch.com/catchjs/v1/catch.js`;
+};
 
 let catchPromise: Promise<CatchSDK> | null = null;
 
@@ -40,7 +53,13 @@ const loadCatchjs = (options: CatchLoadOptions = {}): Promise<CatchSDK> => {
       return;
     }
 
-    const { live = false } = options;
+    const { live = false, environment = "production" } = options;
+
+    if (environment !== "production") {
+      console.warn(
+        `Load Catch.js: A non-production version of Catch.js is being requested. The ${environment} build of Catch.js is intended only for internal/experimental use and provides no guarantee of stability. Proceed with caution.`
+      );
+    }
 
     let catchjs = getNamespace();
     if (catchjs) {
@@ -63,7 +82,7 @@ const loadCatchjs = (options: CatchLoadOptions = {}): Promise<CatchSDK> => {
       return;
     }
 
-    const scriptUrl = live ? LIVE_SCRIPT_URL : SANDBOX_SCRIPT_URL;
+    const scriptUrl = getScriptUrl(environment, live);
     let inject = false;
     let script = document.querySelector<HTMLScriptElement>(
       `script[src="${scriptUrl}"]`
@@ -115,10 +134,4 @@ const resetForTests = (): void => {
   catchPromise = null;
 };
 
-export {
-  SANDBOX_SCRIPT_URL,
-  LIVE_SCRIPT_URL,
-  loadCatchjs,
-  getNamespace,
-  resetForTests,
-};
+export { getScriptUrl, loadCatchjs, getNamespace, resetForTests };

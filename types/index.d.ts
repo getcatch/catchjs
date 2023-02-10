@@ -48,8 +48,11 @@ interface CatchSDK {
   info: SDKInfo;
 }
 
+type CatchEnvironment = "development" | "staging" | "production";
+
 interface CatchLoadOptions {
   live?: boolean;
+  environment?: CatchEnvironment;
 }
 
 interface CatchWindow extends Window {
@@ -71,4 +74,5 @@ export type {
   CatchSDK,
   CatchLoadOptions,
   CatchWindow,
+  CatchEnvironment,
 };
