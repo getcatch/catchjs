@@ -59,8 +59,11 @@ interface CatchSDK {
   info: SDKInfo;
 }
 
+type CatchEnvironment = "development" | "staging" | "production";
+
 interface CatchLoadOptions {
   live?: boolean;
+  environment?: CatchEnvironment;
 }
 
 interface CatchWindow extends Window {
@@ -68,7 +71,7 @@ interface CatchWindow extends Window {
 }
 
 declare module "@get-catch/catchjs" {
-  const loadCatchjs: (options: CatchLoadOptions) => Promise<CatchSDK>;
+  const loadCatchjs: (options?: CatchLoadOptions) => Promise<CatchSDK>;
 }
 
 export type {
@@ -84,4 +87,5 @@ export type {
   CatchSDK,
   CatchLoadOptions,
   CatchWindow,
+  CatchEnvironment,
 };
