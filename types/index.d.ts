@@ -1,3 +1,5 @@
+import { CardDetails, CreateVCNCheckoutPayload } from "./vcn";
+
 type Theme = "light-color" | "light-mono" | "dark-color" | "dark-mono";
 
 type PageType =
@@ -24,6 +26,10 @@ interface OpenCheckoutOptions {
   hideHeader?: boolean;
 }
 
+interface VirtualCardCheckoutOptions extends OpenCheckoutOptions {
+  onConfirm?: (cardDetails?: CardDetails) => void;
+}
+
 interface CatchOptions {
   theme?: Theme;
   pageType?: PageType;
@@ -34,6 +40,11 @@ interface CatchHandle {
   setPageType: (pageType: PageType) => void;
   trackPaymentMethodSelected: () => void;
   openCheckout: (checkoutId: string, options?: OpenCheckoutOptions) => void;
+  createAndOpenVirtualCardCheckout: (
+    orderId: string,
+    createVCNCheckoutPayload: CreateVCNCheckoutPayload,
+    options?: VirtualCardCheckoutOptions
+  ) => void;
   closeConfirmedCheckout: () => void;
 }
 
@@ -68,8 +79,10 @@ export type {
   PageType,
   CheckoutPrefill,
   OpenCheckoutOptions,
+  VirtualCardCheckoutOptions,
   CatchOptions,
   CatchHandle,
+  CreateVCNCheckoutPayload,
   SDKInfo,
   CatchSDK,
   CatchLoadOptions,
