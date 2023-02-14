@@ -38,7 +38,7 @@ let catchPromise: Promise<CatchSDK> | null = null;
  *
  * Once loaded, the SDK must still be initialized by calling `catchjs.init()`.
  */
-const loadCatchjs = (options: CatchLoadOptions = {}): Promise<CatchSDK> => {
+const loadCatchjs = (options?: CatchLoadOptions): Promise<CatchSDK> => {
   // `loadCatchjs()` should only be called once in the lifecycle of an application.
   // However, in case it's called more than once, always return the result of the
   // original call.
@@ -53,7 +53,7 @@ const loadCatchjs = (options: CatchLoadOptions = {}): Promise<CatchSDK> => {
       return;
     }
 
-    const { live = false, environment = "production" } = options;
+    const { live = false, environment = "production" } = options || {};
 
     if (environment !== "production") {
       console.warn(

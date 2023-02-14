@@ -60,7 +60,7 @@ interface CatchWindow extends Window {
 }
 
 declare module "@get-catch/catchjs" {
-  const loadCatchjs: (options: CatchLoadOptions) => Promise<CatchSDK>;
+  const loadCatchjs: (options?: CatchLoadOptions) => Promise<CatchSDK>;
 }
 
 export type {
