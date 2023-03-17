@@ -18,6 +18,7 @@
     "src",
     "types"
   ],
+  "type": "module",
   "module": "./dist/catchjs.es.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
