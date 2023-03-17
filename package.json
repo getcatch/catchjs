@@ -22,7 +22,7 @@
   "module": "./dist/catchjs.es.js",
   "types": "types/index.d.ts",
   "typings": "types/index.d.ts",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
