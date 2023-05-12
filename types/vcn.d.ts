@@ -31,14 +31,18 @@ interface Shipping {
   phone_number?: string;
 }
 
+interface Price {
+  amount: number;
+  currency: string;
+}
+
 interface Item {
   name: string;
   sku: string;
-  price: number;
+  price: Price;
   quantity: number;
-  category?: string[];
+  category?: Array<string>;
   image_url: string;
-  currency: string;
 }
 
 type Items = Array<Item>;
@@ -48,8 +52,8 @@ interface Platform {
   platform_version?: string;
 }
 
-interface CreateVCNCheckoutPayload {
-  merchant_public_key: string;
+interface CreateVirtualCardCheckoutPayload {
+  merchant_order_id: string;
   merchant_user_id: string;
   amounts: Amounts;
   billing: Billing;
@@ -68,7 +72,4 @@ interface CardDetails {
   zip_code: string;
 }
 
-export type {
-  CardDetails,
-  CreateVCNCheckoutPayload,
-}
+export type { CardDetails, CreateVirtualCardCheckoutPayload };
