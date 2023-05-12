@@ -40,6 +40,10 @@ interface CatchHandle {
   setPageType: (pageType: PageType) => void;
   trackPaymentMethodSelected: () => void;
   openCheckout: (checkoutId: string, options?: OpenCheckoutOptions) => void;
+  openVirtualCardCheckout: (
+    checkoutId: string,
+    options?: VirtualCardCheckoutOptions
+  ) => void;
   createAndOpenVirtualCardCheckout: (
     createVirtualCardCheckoutPayload: CreateVirtualCardCheckoutPayload,
     options?: VirtualCardCheckoutOptions
